@@ -1,0 +1,59 @@
+#!/usr/bin/perl
+
+# Build mp3 files with speech using OSX "say" command
+
+
+use strict;
+use Unicode::Diacritic::Strip qw(strip_diacritics);
+use utf8;
+binmode(STDOUT, ":utf8");
+
+
+my $speech_root = './sounds/speech';
+shell("rm -rf $speech_root && mkdir -p $speech_root");
+
+say(light_on => 'Hei, hvem skrudde på lyset?', 'Nå ble det lyst gitt');
+say(light_off => 'Hei, hvem skrudde av lyset?', 'Nå ble det mørkt her. Er det kvellen?');
+say(exit_message => 'Takk', 'Takk for oppmerksomheten', 'Takk, det var hyggelig at du hørte på meg');
+say(random=>'Ha ha ha. Jeg er en morsom nisse.', 'Det er fint å stå her', 'Hvis jeg snakker lavt, så er det ingen som hører meg', 'sånn går nå dagan', 'jeg ønsker meg en hest');
+#   'I dag blir den mye kallere enn i går',
+#   'I dag blir det kaldt',
+#   'I dag blir det varmere enn i går',
+
+
+
+sub say {
+    my ($id, @texts) = @_;
+
+    foreach my $text (@texts) {
+        my $text_id = text_to_id($text);
+
+        my $root = "$speech_root/$id";
+        mkdir $root;
+
+        my $aiff_path = '/tmp/speech.aiff';
+        my $mp3_path = "$root/$text_id.mp3";
+        print "$mp3_path - $text\n";
+
+        shell("say -o $aiff_path -v henrik '$text'");
+        shell("ffmpeg -i $aiff_path $mp3_path 2>/dev/null");
+
+#        shell("open $mp3_path;sleep 2");
+    }
+}
+
+
+sub text_to_id {
+    my ($text) = @_;
+    my $id = lc strip_diacritics($text);
+    $id =~ s/[^a-z]+/-/ig;
+    $id =~ s/( ^-+ | -+ $)//gx;
+    return $id;
+}
+
+
+sub shell {
+    my ($command) = @_;
+#    warn $command,"\n";
+    system($command);
+}
