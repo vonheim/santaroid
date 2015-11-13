@@ -1,0 +1,7 @@
+#!/usr/bin/perl
+use strict;
+
+use Santaroid::Weather;
+
+my $weather = Santaroid::Weather->new(latitude=>59.251944, longitude=>10.418611);
+print $weather->what_to_say;
