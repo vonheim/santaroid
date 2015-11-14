@@ -28,7 +28,7 @@ sub whole_period {
 }
 
 
-sub what_to_say {
+sub predict_weather {
     my ($self) = @_;
     my $period = $self->whole_period->next_n_hours(8);
     
@@ -41,6 +41,25 @@ sub what_to_say {
 
     my $wind = $period->wind;
     return "wind" if $wind->{hours} > 4;
+
+    return "";
+}
+
+
+sub talk_about_weather {
+    my ($self) = @_;
+    my $period = $self->whole_period->next_n_hours(1);
+
+    my $rain = $period->rain;
+    return "rain" if $rain->{max} > 1;
+    return "some-rain" if $rain->{max} > 0.2;
+
+    my $temperature = $period->temperature;
+    return "frost" if $temperature->{min} < 0;
+
+    my $wind = $period->wind;
+    return "windy" if $wind->{max} > 8;
+    return "some-wind" if $wind->{max} > 5.5;
 
     return "";
 }

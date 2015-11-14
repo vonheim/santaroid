@@ -4,4 +4,4 @@ use strict;
 use Santaroid::Weather;
 
 my $weather = Santaroid::Weather->new(latitude=>59.251944, longitude=>10.418611);
-print $weather->talk_about_weather;
+print $weather->predict_weather;
