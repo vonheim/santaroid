@@ -13,7 +13,8 @@ my $sub = Sub::Override->new('Santaroid::Weather::_build_forecast', sub {
 });
 
 my $weather = Santaroid::Weather->new(latitude=>59.251944, longitude=>10.418611);
-is($weather->what_to_say, 'rain', 'what_to_say()');
+is($weather->predict_weather, 'rain', 'predict_weather()');
+is($weather->talk_about_weather, '', 'talk_about_weather()');
 
 
 
