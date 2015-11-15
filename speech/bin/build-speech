@@ -14,6 +14,9 @@ shell("rm -rf $speech_root && mkdir -p $speech_root");
 
 say(light_on => 'Hei, hvem skrudde på lyset?', 'Nå ble det lyst gitt');
 say(light_off => 'Hei, hvem skrudde av lyset?', 'Nå ble det mørkt her. Er det kvellen?');
+say(cold_here => 'Det ble kaldt', 'Hei, lukk døra. Det er kaldt her.', 'Huff, så kaldt det er her');
+say(warm_here => 'Herregud, så varmt det er her', 'Kan dere skru ned varmen litt?', 'Kan noen skru ned varmen? Jeg koker her jeg står');
+
 say(exit_message => 'Takk', 'Takk for oppmerksomheten', 'Takk, det var hyggelig at du hørte på meg');
 say(random=>'Ha ha ha. Jeg er en morsom nisse.', 'Det er fint å stå her', 'Hvis jeg snakker lavt, så er det ingen som hører meg', 'sånn går nå dagan', 'jeg ønsker meg en hest');
 #   'I dag blir den mye kallere enn i går',
