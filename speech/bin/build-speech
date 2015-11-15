@@ -19,6 +19,8 @@ say(warm_here => 'Herregud, så varmt det er her', 'Kan dere skru ned varmen lit
 
 say(exit_message => 'Takk', 'Takk for oppmerksomheten', 'Takk, det var hyggelig at du hørte på meg');
 say(random=>'Ha ha ha. Jeg er en morsom nisse.', 'Det er fint å stå her', 'Hvis jeg snakker lavt, så er det ingen som hører meg', 'sånn går nå dagan', 'jeg ønsker meg en hest');
+say(noisy=>'Kan dere være litt stille?', 'Kan dere dempe dere litt?', 'Vær stille!', 'Ta det litt rolig her nå!', 'Kan dere roe det bråket?');
+
 #   'I dag blir den mye kallere enn i går',
 #   'I dag blir det kaldt',
 #   'I dag blir det varmere enn i går',
