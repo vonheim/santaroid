@@ -10,7 +10,6 @@ binmode(STDOUT, ":utf8");
 
 
 my $speech_root = './sounds/speech';
-shell("rm -rf $speech_root && mkdir -p $speech_root");
 
 say(light_on => 'Hei, hvem skrudde på lyset?', 'Nå ble det lyst gitt');
 say(light_off => 'Hei, hvem skrudde av lyset?', 'Nå ble det mørkt her. Er det kvellen?');
@@ -30,11 +29,12 @@ say(noisy=>'Hysj!', 'Plis, jeg prøver å tenke her', 'Kan dere være litt still
 sub say {
     my ($id, @texts) = @_;
 
+    my $root = "$speech_root/$id";
+    mkdir $root;
+    shell("rm $root/*");
+
     foreach my $text (@texts) {
         my $text_id = text_to_id($text);
-
-        my $root = "$speech_root/$id";
-        mkdir $root;
 
         my $aiff_path = '/tmp/speech.aiff';
         my $mp3_path = "$root/$text_id.mp3";
