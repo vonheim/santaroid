@@ -65,7 +65,7 @@ def check_motion():
     print "motion "+str(motion)
 
     if motion==1:
-        say('random', 10)
+        say('fart', 3600);
         camera.take_picture()
 
 
